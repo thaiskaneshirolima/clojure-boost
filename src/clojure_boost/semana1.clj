@@ -29,7 +29,6 @@
                        :cartao (long 32995491)})
 
 (println "Resultado do exercicio: Criar a função nova-compra")
-(println exemplo-nova-compra)
 
 (defn nova-compra [data valor estabelecimento categoria cartao]
   {:data (str data)
@@ -37,6 +36,11 @@
    :estabelecimento (str estabelecimento)
    :categoria (str categoria)
    :cartao (long cartao)})
+
+(def exemplo-compra
+  (nova-compra "2022-07-19" 0.06 "starbucks" "café" 3939393939393939))
+
+(println exemplo-compra)
 
 
 ;--------------------------------------------------------------------------------------------
