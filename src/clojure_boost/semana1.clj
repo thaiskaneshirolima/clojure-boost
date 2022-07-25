@@ -22,14 +22,14 @@
 ;; Map com a seguinte estrutura:
 ;; {:data ... :valor ... :estabelecimento ... :categoria ... :cartao ...}
 
-(def nova-compras {:data (str "2022-07-19")
-                  :valor (bigdec 0.06)
-                  :estabelecimento (str "starbucks")
-                  :categoria (str "café")
-                  :cartao (long 32995491)})
+(def exemplo-nova-compra {:data (str "2022-07-19")
+                       :valor (bigdec 0.06)
+                       :estabelecimento (str "starbucks")
+                       :categoria (str "café")
+                       :cartao (long 32995491)})
 
 (println "Resultado do exercicio: Criar a função nova-compra")
-(println nova-compras)
+(println exemplo-nova-compra)
 
 (defn nova-compra [data valor estabelecimento categoria cartao]
   {:data (str data)
