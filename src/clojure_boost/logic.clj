@@ -12,24 +12,28 @@
         date-test (if (instance? String date)
                      (jt/local-date "dd/MM/yyyy" date)
                      date)]
-    (if (jt/not-before? now date-test)
-      true
-      (throw (ex-info "Oops! Something went wrong with date!" {})))))
+    (if (and (not= date-test nil)
+             (jt/not-before? now date-test))
+      true 
+        (throw (ex-info "Oops! Something went wrong with date!" {:date date-test})))))
 
 ;; Valor:
 ;; deve ser um BigDecimal positivo.
 
 (defn valid-value? [value]
-  (if (and (= (bigdec value) value) (>= (bigdec value) 0))
+  (if (and 
+       (not= value nil)
+       (= (bigdec value) value) (>= (bigdec value) 0))
     true
-    (throw (ex-info "Oops! Something went wrong with value!" {}))))
+    (throw (ex-info "Oops! Something went wrong with value!" {:valor value}))))
 
 ;; Estabelecimento:
 ;; Deve ter pelo menos 2 caracteres.
 
 (defn valid-establishment? [estabelecimento]
-  (if (>= (count estabelecimento) 2) true
-      (throw (ex-info "Oops! Something went wrong with establishment!" {}))))
+  (if (>= (count estabelecimento) 2) 
+    true
+      (throw (ex-info "Oops! Something went wrong with establishment!"  {:estabelecimento estabelecimento}))))
 
 
 ;; Categoria:
@@ -44,7 +48,7 @@
              "Lazer"
              "Saúde"])
     true
-    (throw (ex-info "Oops! Something went wrong with category!" {}))))
+    (throw (ex-info "Oops! Something went wrong with category!" {:categoria category}))))
 
 ;;---------------------------------------------------------------------------
 ;; Tarefa

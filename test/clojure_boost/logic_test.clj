@@ -11,7 +11,7 @@
   (testing "Does not accept data greater than the current date"
     (is (thrown? Exception (valid-date? (jt/plus (jt/local-date) (jt/days 30))))))
   (testing "Does not accept nill"
-    (is (thrown? NullPointerException (valid-date? nil)))))
+    (is (thrown? Exception (valid-date? nil)))))
 
 (deftest valid-value-test
   (testing "Accept bugdec value"
@@ -55,16 +55,10 @@
   (testing "If the shopping list is empty, the ID must be the value 1"
     (is (= 1 (gera-id []))))
   (testing "The new purchase ID must be the maximum value of the shopping list ID plus 1"
-    (is (= 334 (gera-id [{:id 111} {:id 333} {:id 222}]))))) 
+    (is (= 334 (gera-id [{:id 111} {:id 333} {:id 222}])))))
 
-;; (deftest insere-compra-test
-;;   (testing "If the shopping list is empty, the ID must be the value 1"
-;;     (is (= [{:id 1
-;;               :data "27/07/2022"
-;;               :valor 100.90M
-;;               :estabelecimento "Outback"
-;;               :categoria "Alimentação"
-;;               :cartao 123412341234}]
-;;            (insere-compra [] 
-;;                           (->CompraRealizada 10 "27/07/2022" 100.90M "Outback" "Alimentação" 123412341234))))))
-
+(deftest insere-compra-test
+  (testing "Insert new purchase"
+    (is (= [(->CompraRealizada 1 "27/07/2022" 100.90M "Outback" "Alimentação" 123412341234)]
+           (insere-compra []
+                          (->CompraRealizada 10 "27/07/2022" 100.90M "Outback" "Alimentação" 123412341234))))))
