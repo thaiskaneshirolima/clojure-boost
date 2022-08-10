@@ -41,8 +41,10 @@
 
 (defn valid-card? [card-numb]
   {:pre [(is-nil? card-numb)]}
-  (and (>= card-numb 0) (<= card-numb 10000000000000000)))
+  (and (= (int? card-numb) true)
+   (>= card-numb 0) (<= card-numb 10000000000000000)))
 
+;; (int? 10000000000000000)
 ;; (valid-card? 2147483647)
 ;; (= (int card-numb) card-numb)
 

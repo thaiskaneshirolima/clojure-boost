@@ -7,7 +7,7 @@
 
 (s/set-fn-validation! true)
 
-(deftest nova-compra-test
+(deftest CompraSchema-test
   (testing "Context of the test assertions"
     (is (= {:data (jt/local-date),
             :valor 100M,

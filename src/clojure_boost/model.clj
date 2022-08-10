@@ -38,7 +38,7 @@
    :cartao ValidCard})
 
 (pprint (s/validate CompraSchema {:data (jt/local-date)
-                                  :valor 10
+                                  :valor 10M
                                   :estabelecimento "12"
                                   :categoria "Casa"
                                   :cartao 111111}))
@@ -55,7 +55,7 @@
          :categoria categoria
          :cartao cartao})
 
-(pprint(nova-compra "01/08/2022" 10 "Lar" "Casa" 123456))
+(pprint(nova-compra "01/08/2022" 10M "Lar" "Casa" 123456))
 
 
 (defn insere-compra [lista-compras CompraSchema]
